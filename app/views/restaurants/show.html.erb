@@ -1,0 +1,41 @@
+ <%= render "nav" %>
+<div class="container">
+  <div class="row p-5">
+    <h1 class="w-100 mb-4"><%= @restaurant.name %></h1>
+      <div class="col">
+        <ul class="list-unstyled">
+          <li><i class="fa-solid fa-house"></i> <%= @restaurant.address %></li>
+          <li><i class="fa-solid fa-phone"></i> <%= @restaurant.phone_number %></li>
+          <li><i class="fa-solid fa-bowl-food"></i> <%= @restaurant.category.capitalize %></li>
+        </ul>
+      </div>
+      <div class="w-100"></div>
+      <h2 class="w-100 mb-2">Reviews</h1>
+      <div class="col">
+        <ul class="list-unstyled">
+        <% if @restaurant.reviews.any? %>
+          <% @reviews.each do |review| %>
+              <li>
+                <% 5.times do |i| %>
+                  <% if i < review.rating %>
+                    <i class="fa-solid fa-star"></i>
+                  <% else %>
+                    <i class="fa-regular fa-star"></i>
+                  <% end %>
+                <% end %>
+              </li>
+              <li class="text-secondary mb-3"><%= review.content %></li>
+          <% end %>
+        <% else %>
+          <li>No Reviews Yet</li>
+        <% end %>
+
+
+        </ul>
+      </div>
+      <div class="w-100"></div>
+      <div class="col">
+        <%= link_to "Submit a New Review", new_restaurant_review_path(@restaurant), class:"btn btn-primary"  %>
+      </div>
+  </div>
+</div>

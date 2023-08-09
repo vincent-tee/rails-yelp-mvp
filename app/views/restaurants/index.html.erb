@@ -1,0 +1,17 @@
+ <%= render "nav" %>
+<div class="container">
+  <div class="row p-5">
+  <h1 class="w-100 mb-4">Restaurants</h1>
+      <% @restaurants.each do |restaurant| %>
+        <div class="col-md-3">
+        <div class="card mt-3" style="width: 18rem;">
+        <img class="card-img-top" src="https://source.unsplash.com/1920x1080/?<%= restaurant.category %> food" alt="Card image cap">
+        <div class="card-body text-center">
+        <p><%= link_to restaurant.name, restaurant_path(restaurant), class:"text-decoration-none text-dark" %></p>
+        </div>
+        </div>
+    </div>
+    <% end %>
+    <div class="w-100"></div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+ <%= render "nav" %>
+<div class="container">
+  <div class="row p-5">
+  <h1 class="w-100 mb-4">Create a new Restaurant</h1>
+    <div class="col">
+      <%= simple_form_for(@restaurant) do |f| %>
+      <%= f.input :name %>
+      <%= f.input :address %>
+      <%= f.input :phone_number %>
+      <%= f.input :category, collection: %w[chinese italian japanese french belgian]%>
+      <%= f.submit %>
+      <% end %>
+    </div>
+    <div class="w-100"></div>
+    <div class="col mt-3">
+    <%= link_to "Cancel Setup", restaurants_path, class:"btn btn-primary" %>
+    </div>
+  </div>
+</div>
